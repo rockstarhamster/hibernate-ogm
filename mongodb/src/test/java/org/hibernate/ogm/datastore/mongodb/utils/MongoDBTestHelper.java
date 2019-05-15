@@ -343,4 +343,14 @@ public class MongoDBTestHelper extends BaseGridDialectTestHelper implements Grid
 		MongoIterable<String> listCollectionNames = provider.getDatabase().listCollectionNames();
 		return listCollectionNames.into( new ArrayList<>() ).contains( collectionName );
 	}
+
+	/**
+	 * collectionExists method is used because every time when whe
+	 * call provider.getDatabase() MongoDB driver create new instance of db,
+	 * but after dropping there aren't any collection.
+	 * In this way we can check is database exists
+	 */
+	public static boolean isDataBaseExists(SessionFactory sessionFactory, String collectionName) {
+		return collectionExists( sessionFactory, collectionName );
+	}
 }
