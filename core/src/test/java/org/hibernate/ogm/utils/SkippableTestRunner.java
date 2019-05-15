@@ -6,12 +6,6 @@
  */
 package org.hibernate.ogm.utils;
 
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
 import org.hibernate.ogm.datastore.impl.DatastoreProviderType;
 import org.hibernate.ogm.dialect.spi.GridDialect;
 import org.jboss.byteman.contrib.bmunit.BMUnitRunner;
@@ -19,6 +13,12 @@ import org.junit.runner.Description;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
+
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 /**
  * A JUnit 4 test runner for which allows to skip tests for single grid dialects or datastore providers by annotating
