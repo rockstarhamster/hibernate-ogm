@@ -181,6 +181,21 @@ public class QueryWithParametersTest extends OgmJpaTestCase {
 		entityManager.close();
 	}
 
+	@Test
+	public void canUseStringParameterForSimpleComparison() {
+		EntityManager entityManager = getFactory().createEntityManager();
+		entityManager.getTransaction().begin();
+
+		List<Movie> thrillers = entityManager.createQuery( "SELECT m FROM Movie m WHERE m.id = ?1", Movie.class )
+				.setParameter( 1, "movie-4" )
+				.getResultList();
+
+		assertThat( thrillers ).onProperty( "title" ).containsOnly( "Barnie" );
+
+		entityManager.getTransaction().commit();
+		entityManager.close();
+	}
+
 	@Before
 	public void insertTestEntities() throws Exception {
 		EntityManager entityManager = getFactory().createEntityManager();
